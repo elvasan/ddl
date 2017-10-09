@@ -7,4 +7,3 @@ LOCATION 's3://jornaya-dev-us-east-1-rdl/snapshots/snapshots_0917/'
 TBLPROPERTIES ('PARQUET.COMPRESS'='SNAPPY');
 
 MSCK REPAIR TABLE snapshots;
-
