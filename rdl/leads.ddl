@@ -7,4 +7,3 @@ LOCATION 's3://jornaya-dev-us-east-1-rdl/leads/'
 TBLPROPERTIES ('PARQUET.COMPRESS'='SNAPPY');
 
 MSCK REPAIR TABLE leads;
-

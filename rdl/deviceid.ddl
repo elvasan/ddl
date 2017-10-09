@@ -7,4 +7,3 @@ LOCATION 's3://jornaya-dev-us-east-1-rdl/deviceid/'
 TBLPROPERTIES ('PARQUET.COMPRESS'='SNAPPY');
 
 MSCK REPAIR TABLE deviceid;
-
