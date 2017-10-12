@@ -32,5 +32,4 @@ CREATE EXTERNAL TABLE IF NOT EXISTS accounts(
 , `website` STRING
 )
 STORED AS PARQUET
-LOCATION 's3://jornaya-dev-us-east-1-udl/accounts/'
-TBLPROPERTIES ('PARQUET.COMPRESS'='SNAPPY');
+LOCATION 's3://jornaya-dev-us-east-1-udl/accounts/';
