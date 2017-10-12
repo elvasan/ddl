@@ -18,6 +18,7 @@ CREATE EXTERNAL TABLE IF NOT EXISTS campaigns(
 , `name` STRING
 , `threatmetrix_default` TINYINT
 )
+STORED AS PARQUET
 LOCATION 's3://jornaya-dev-us-east-1-udl/campaigns/'
 TBLPROPERTIES ('PARQUET.COMPRESS'='SNAPPY');
 
