@@ -26,7 +26,6 @@ CREATE EXTERNAL TABLE IF NOT EXISTS lead_dom(
 )
 PARTITIONED BY (create_day DATE)
 STORED AS PARQUET
-LOCATION 's3://jornaya-dev-us-east-1-udl/lead_dom/'
-TBLPROPERTIES ('PARQUET.COMPRESS'='SNAPPY');
+LOCATION 's3://jornaya-dev-us-east-1-udl/lead_dom/';
 
 MSCK REPAIR TABLE lead_dom;
