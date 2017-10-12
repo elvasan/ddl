@@ -10,7 +10,6 @@ CREATE EXTERNAL TABLE IF NOT EXISTS deviceid(
 )
 PARTITIONED BY (create_day DATE)
 STORED AS PARQUET
-LOCATION 's3://jornaya-dev-us-east-1-udl/deviceid/'
-TBLPROPERTIES ('PARQUET.COMPRESS'='SNAPPY');
+LOCATION 's3://jornaya-dev-us-east-1-udl/deviceid/';
 
 MSCK REPAIR TABLE deviceid;

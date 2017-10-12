@@ -18,7 +18,6 @@ CREATE EXTERNAL TABLE IF NOT EXISTS urls(
 )
 PARTITIONED BY (create_day DATE)
 STORED AS PARQUET
-LOCATION 's3://jornaya-dev-us-east-1-udl/urls/'
-TBLPROPERTIES ('PARQUET.COMPRESS'='SNAPPY');
+LOCATION 's3://jornaya-dev-us-east-1-udl/urls/';
 
 MSCK REPAIR TABLE urls;
