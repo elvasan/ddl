@@ -7,9 +7,9 @@ CREATE EXTERNAL TABLE IF NOT EXISTS formdata(
 , `email` TINYINT
 , `execution_time` INT
 , `fieldvisibility` STRING
-, `http_content_length` INT
-, `http_user_agent` STRING
-, `http_x_forwarded_for` STRING
+, `http_Content-Length` INT
+, `http_User-Agent` STRING
+, `http_X-Forwarded-For` STRING
 , `id` STRING
 , `init` STRING
 , `label` STRING
