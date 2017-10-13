@@ -15,8 +15,8 @@ CREATE EXTERNAL TABLE IF NOT EXISTS formdata(
 , `label` STRING
 , `labelvisibility` STRING
 , `name` STRING
-, `option_count` SMALLINT
-, `option_label` STRING
+, `optionCount` SMALLINT
+, `optionLabel` STRING
 , `page_id` CHAR(36)
 , `phone` TINYINT
 , `sequence_number` SMALLINT
@@ -26,7 +26,6 @@ CREATE EXTERNAL TABLE IF NOT EXISTS formdata(
 )
 PARTITIONED BY (create_day DATE)
 STORED AS PARQUET
-LOCATION 's3://jornaya-dev-us-east-1-udl/formdata/'
-TBLPROPERTIES ('PARQUET.COMPRESS'='SNAPPY');
+LOCATION 's3://jornaya-dev-us-east-1-udl/formdata/';
 
 MSCK REPAIR TABLE formdata;
