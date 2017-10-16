@@ -15,8 +15,8 @@ CREATE EXTERNAL TABLE IF NOT EXISTS formdata(
 , `label` STRING
 , `labelvisibility` STRING
 , `name` STRING
-, `option_count` SMALLINT
-, `option_label` STRING
+, `optionCount` SMALLINT
+, `optionLabel` STRING
 , `page_id` CHAR(36)
 , `phone` TINYINT
 , `sequence_number` SMALLINT
