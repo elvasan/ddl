@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS entities;
 
 CREATE EXTERNAL TABLE IF NOT EXISTS entities(
   `active` TINYINT
-, `code` CHAR(36)
+, `code` VARCHAR(36)
 , `created` BIGINT
 , `industry` SMALLINT
 , `modified` BIGINT
