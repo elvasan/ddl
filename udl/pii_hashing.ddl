@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS pii_hashing;
 
 CREATE EXTERNAL TABLE IF NOT EXISTS pii_hashing(
-  `canonical_hash` CHAR(32)
+  `canonical_hash` VARCHAR(32)
 , `hash` STRING
 , `hash_type` STRING
 )
