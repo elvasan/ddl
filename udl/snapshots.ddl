@@ -3,16 +3,16 @@ DROP TABLE IF EXISTS snapshots;
 CREATE EXTERNAL TABLE IF NOT EXISTS snapshots(
   `capture_time` BIGINT
 , `client_time` BIGINT
-, `content_hash` CHAR(32)
+, `content_hash` VARCHAR(32)
 , `content_url` STRING
 , `element_ids` STRING
-, `http_Content-Length` INT
-, `http_User-Agent` STRING
-, `http_X-Forwarded-For` STRING
-, `page_id` CHAR(36)
+, `http_content_length` INT
+, `http_user_agent` STRING
+, `http_x_forwarded_for` STRING
+, `page_id` VARCHAR(36)
 , `sequence_number` SMALLINT
-, `server_time` DECIMAL(14, 4)
-, `token` CHAR(36)
+, `server_time` BIGINT
+, `token` VARCHAR(36)
 , `type` STRING
 , `url` STRING
 )
