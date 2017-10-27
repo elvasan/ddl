@@ -1,12 +1,12 @@
 DROP TABLE IF EXISTS deviceid;
 
 CREATE EXTERNAL TABLE IF NOT EXISTS deviceid(
-  `created` DECIMAL(14, 4)
-, `http_User-Agent` STRING
-, `http_X-Forwarded-For` STRING
+  `created` BIGINT
+, `http_user_agent` STRING
+, `http_x_forwarded_for` STRING
 , `methods` SMALLINT
-, `token` CHAR(36)
-, `uuid` CHAR(32)
+, `token` VARCHAR(36)
+, `uuid` VARCHAR(32)
 )
 PARTITIONED BY (create_day DATE)
 STORED AS PARQUET
