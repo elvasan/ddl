@@ -2,27 +2,26 @@ DROP TABLE IF EXISTS lead_dom;
 
 CREATE EXTERNAL TABLE IF NOT EXISTS lead_dom(
   `client_time` BIGINT
-, `created` DECIMAL(14, 4)
+, `created` BIGINT
 , `dst` BOOLEAN
 , `execution_time` INT
 , `flash_version` STRING
-, `http_Content-Length` INT
-, `http_User-Agent` STRING
-, `http_X-Forwarded-For` STRING
-, `localStorage` BOOLEAN
-, `navigator\\appCodeName` STRING
-, `navigator\\language` STRING
-, `navigator\\platform` STRING
-, `navigator\\productSub` STRING
-, `navigator\\userAgent` STRING
-, `page_id` CHAR(36)
-, `screen\\height` SMALLINT
-, `screen\\width` SMALLINT
+, `http_content_length` INT
+, `http_user_agent` STRING
+, `http_x_forwarded_for` STRING
+, `local_storage` BOOLEAN
+, `navigator_app_code_name` STRING
+, `navigator_language` STRING
+, `navigator_platform` STRING
+, `navigator_product_sub` STRING
+, `navigator_user_agent` STRING
+, `page_id` VARCHAR(36)
+, `screen_height` SMALLINT
+, `screen_width` SMALLINT
 , `sequence_number` SMALLINT
-, `sessionStorage` BOOLEAN
-, `token` CHAR(36)
+, `session_storage` BOOLEAN
+, `token` VARCHAR(36)
 , `tz` SMALLINT
-, `WebSocket` BOOLEAN
 )
 PARTITIONED BY (create_day DATE)
 STORED AS PARQUET
