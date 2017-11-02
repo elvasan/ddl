@@ -1,0 +1,16 @@
+CREATE EXTERNAL TABLE IF NOT EXISTS `hash_mapping`(
+  `canonical_hash_value` varchar(36), 
+  `hash_type_cd` int, 
+  `hash_value` varchar(32), 
+  `source_ts` timestamp, 
+  `insert_ts` timestamp, 
+  `insert_job_run_id` int, 
+  `insert_batch_run_id` int)
+ROW FORMAT SERDE 
+  'org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe' 
+STORED AS INPUTFORMAT 
+  'org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat' 
+OUTPUTFORMAT 
+  'org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat'
+LOCATION
+  's3://jornaya-dev-us-east-1-fdl/hash_mapping'
