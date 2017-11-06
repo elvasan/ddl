@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS deviceid;
 
 CREATE EXTERNAL TABLE IF NOT EXISTS deviceid(
-  `created` BIGINT
+  `created` DOUBLE
 , `http_user_agent` STRING
 , `http_x_forwarded_for` STRING
 , `methods` SMALLINT
