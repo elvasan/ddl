@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ddl_dirs=( "rdl" "udl" "fdl" "prj" )
+layer=""
 logs_bucket="s3://aws-athena-query-results-794223901232-us-east-1"
 
 # run_athena_query
@@ -16,14 +16,13 @@ run_athena_query() {
               --output text`
 
   query_state=`aws athena get-query-execution \
-              --query-execution-id $query_id \
+              --query-execution-id ${query_id} \
               --query 'QueryExecution.Status.State' \
               --output text`
 
-  while [ RUNNING == $query_state ] || [ SUBMITTED == $query_state ]; do
-    sleep 2
+  while [ RUNNING == ${query_state} ] || [ SUBMITTED == ${query_state} ]; do
     query_state=`aws athena get-query-execution \
-                --query-execution-id $query_id \
+                --query-execution-id ${query_id} \
                 --query 'QueryExecution.Status.State' \
                 --output text`
   done
@@ -34,15 +33,17 @@ run_athena_query() {
   fi
 }
 
-for dir in ${ddl_dirs[@]}; do
-  for ddl_file in $(find ${dir}/. -name "*.ddl"); do
-    ddl=$(< ${ddl_file})
-    drop_statement=$(echo ${ddl} | awk -F ";" '{print $1}')
-    create_statement=$(echo ${ddl} | awk -F ";" '{print $2}')
+while getopts l: opt; do
+  case ${opt} in
+    l) layer=${OPTARG};;
+    *) return 1
+  esac
+done
 
-    echo `date` "Executing DDL in ${ddl_file}..."
-    run_athena_query "${drop_statement}" ${dir}
-    run_athena_query "${create_statement}" ${dir}
-    echo `date` "Done."
-  done
+for ddl_file in $(find ${layer} -name "*.ddl" | sort); do
+  ddl=$(< ${ddl_file})
+
+  echo `date` "Executing DDL in ${ddl_file}..."
+  run_athena_query "${ddl}" ${layer}
+  echo `date` "Done."
 done
