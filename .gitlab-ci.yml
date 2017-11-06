@@ -1,0 +1,30 @@
+image: python:3.6
+
+stages:
+  - deploy
+
+.deploy_template: &deploy_template
+  stage: deploy
+  when: manual
+  tags:
+    - docker
+  before_script:
+    - pip install awscli
+    - export AWS_DEFAULT_REGION="us-east-1"
+
+deploy udl, rdl, fdl, lrf to dev:
+  <<: *deploy_template
+  environment:
+    name: dev-rufl
+  script:
+    - bash
+    - layers=( "udl" "rdl" "fdl" "lrf" )
+    - for layer in $layers; do bash ddl_deploy.sh -l ${layer}; done
+
+deploy prj to dev:
+  <<: *deploy_template
+  environment:
+    name: dev-prj
+  script:
+    - bash
+    - bash ddl_deploy.sh -l prj
