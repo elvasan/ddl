@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS formdata;
 CREATE EXTERNAL TABLE IF NOT EXISTS formdata(
   `checked` TINYINT
 , `client_time` BIGINT
-, `created` DECIMAL(14, 4)
+, `created` BIGINT
 , `email` TINYINT
 , `execution_time` INT
 , `fieldvisibility` STRING
