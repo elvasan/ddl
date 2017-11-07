@@ -5,7 +5,7 @@ CREATE EXTERNAL TABLE IF NOT EXISTS leads(
 , `browser_name` STRING
 , `campaign_key` VARCHAR(36)
 , `client_time` BIGINT
-, `created` BIGINT
+, `created` DOUBLE
 , `device_pointing_method` STRING
 , `device_type` STRING
 , `geoip_city` STRING
@@ -30,4 +30,5 @@ CREATE EXTERNAL TABLE IF NOT EXISTS leads(
 )
 PARTITIONED BY (create_day DATE)
 STORED AS PARQUET
-LOCATION 's3://jornaya-dev-us-east-1-udl/leads/';
+LOCATION 's3://jornaya-dev-us-east-1-udl/leads/'
+TBLPROPERTIES ("parquet.compress"="SNAPPY");

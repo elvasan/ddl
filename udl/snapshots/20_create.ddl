@@ -9,11 +9,12 @@ CREATE EXTERNAL TABLE IF NOT EXISTS snapshots(
 , `http_x_forwarded_for` STRING
 , `page_id` VARCHAR(36)
 , `sequence_number` SMALLINT
-, `server_time` BIGINT
+, `server_time` DOUBLE
 , `token` VARCHAR(36)
 , `type` STRING
 , `url` STRING
 )
 PARTITIONED BY (create_day DATE)
 STORED AS PARQUET
-LOCATION 's3://jornaya-dev-us-east-1-udl/snapshots/';
+LOCATION 's3://jornaya-dev-us-east-1-udl/snapshots/'
+TBLPROPERTIES ("parquet.compress"="SNAPPY");

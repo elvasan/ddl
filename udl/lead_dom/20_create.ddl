@@ -1,6 +1,6 @@
 CREATE EXTERNAL TABLE IF NOT EXISTS lead_dom(
   `client_time` BIGINT
-, `created` BIGINT
+, `created` DOUBLE
 , `dst` BOOLEAN
 , `execution_time` INT
 , `flash_version` STRING
@@ -23,4 +23,5 @@ CREATE EXTERNAL TABLE IF NOT EXISTS lead_dom(
 )
 PARTITIONED BY (create_day DATE)
 STORED AS PARQUET
-LOCATION 's3://jornaya-dev-us-east-1-udl/lead_dom/';
+LOCATION 's3://jornaya-dev-us-east-1-udl/lead_dom/'
+TBLPROPERTIES ("parquet.compress"="SNAPPY");

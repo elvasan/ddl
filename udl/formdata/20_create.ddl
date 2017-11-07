@@ -1,7 +1,7 @@
 CREATE EXTERNAL TABLE IF NOT EXISTS formdata(
   `checked` TINYINT
 , `client_time` BIGINT
-, `created` BIGINT
+, `created` DOUBLE
 , `email` TINYINT
 , `execution_time` INT
 , `fieldvisibility` STRING
@@ -24,4 +24,5 @@ CREATE EXTERNAL TABLE IF NOT EXISTS formdata(
 )
 PARTITIONED BY (create_day DATE)
 STORED AS PARQUET
-LOCATION 's3://jornaya-dev-us-east-1-udl/formdata/';
+LOCATION 's3://jornaya-dev-us-east-1-udl/formdata/'
+TBLPROPERTIES ("parquet.compress"="SNAPPY");
