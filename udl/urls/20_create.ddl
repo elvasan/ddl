@@ -1,7 +1,7 @@
 CREATE EXTERNAL TABLE IF NOT EXISTS urls(
   `campaign_key` VARCHAR(36)
 , `client_time` BIGINT
-, `created` BIGINT
+, `created` DOUBLE
 , `hash` VARCHAR(32)
 , `http_content_length` INT
 , `http_user_agent` STRING
@@ -16,4 +16,5 @@ CREATE EXTERNAL TABLE IF NOT EXISTS urls(
 )
 PARTITIONED BY (create_day DATE)
 STORED AS PARQUET
-LOCATION 's3://jornaya-dev-us-east-1-udl/urls/';
+LOCATION 's3://jornaya-dev-us-east-1-udl/urls/'
+TBLPROPERTIES ("parquet.compress"="SNAPPY");
