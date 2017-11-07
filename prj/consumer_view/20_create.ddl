@@ -9,4 +9,4 @@ CREATE EXTERNAL TABLE IF NOT EXISTS consumer_view (
   inserted_ts            timestamp
   ) PARTITIONED BY (partition_id smallint)
 STORED AS PARQUET
-LOCATION 's3://jornaya-dev-us-east-1-prj/cis/consumer_view';
+LOCATION 's3://jornaya-dev-us-east-1-prj/cis/consumer_graph/consumer_view';
