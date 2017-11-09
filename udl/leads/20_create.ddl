@@ -18,7 +18,7 @@ CREATE EXTERNAL TABLE IF NOT EXISTS `leads`(
   `http_user_agent` string, 
   `http_x_forwarded_for` string, 
   `ip` bigint, 
-  `is_mobile_device` string, 
+  `is_mobile_device` tinyint, 
   `major_ver` string, 
   `minor_ver` string, 
   `page_id` varchar(36), 
