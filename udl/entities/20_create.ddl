@@ -5,9 +5,9 @@ CREATE EXTERNAL TABLE IF NOT EXISTS entities(
 , `industry` SMALLINT
 , `modified` DOUBLE
 , `name` VARCHAR(255)
-, `insert_ts` TIMESTAMP,
-, `insert_batch_run_id` INT,
-, `insert_job_run_id` INT,
+, `insert_ts` TIMESTAMP
+, `insert_batch_run_id` INT
+, `insert_job_run_id` INT
 , `source_ts` TIMESTAMP
 )
 STORED AS PARQUET
