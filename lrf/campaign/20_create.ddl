@@ -8,7 +8,7 @@ CREATE EXTERNAL TABLE IF NOT EXISTS campaign (
   insert_batch_run_id int,
   insert_job_run_id   int,
   source_ts           timestamp,
-  load_action_code    string
+  load_action_cd      string
 )
 STORED AS PARQUET
 LOCATION 's3://jornaya-dev-us-east-1-lrf/campaign/'
