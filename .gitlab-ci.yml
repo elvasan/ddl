@@ -19,7 +19,7 @@ deploy udl, rdl, fdl, lrf to dev:
   script:
     - bash
     - layers=( "udl" "rdl" "fdl" "lrf" )
-    - for layer in $layers; do bash ddl_deploy.sh -l ${layer}; done
+    - for layer in ${layers[@]}; do bash ddl_deploy.sh -l ${layer}; done
 
 deploy prj to dev:
   <<: *deploy_template
