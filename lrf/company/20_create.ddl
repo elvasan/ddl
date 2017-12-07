@@ -1,7 +1,6 @@
 CREATE EXTERNAL TABLE IF NOT EXISTS company (
   account_key         varchar(36), 
-  account_id          varchar(36), 
-  source_mod_ts       timestamp, 
+  account_id          varchar(36),
   company_nm          varchar(80), 
   entity_id           varchar(36), 
   is_active_ind       smallint, 
