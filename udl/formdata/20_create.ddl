@@ -5,6 +5,7 @@ CREATE EXTERNAL TABLE IF NOT EXISTS `formdata`(
   `email` tinyint, 
   `execution_time` int, 
   `fieldvisibility` string, 
+  `field_seq_nbr` int, 
   `http_content_length` int, 
   `http_user_agent` string, 
   `http_x_forwarded_for` string, 
