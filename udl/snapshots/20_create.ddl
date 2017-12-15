@@ -18,5 +18,5 @@ CREATE EXTERNAL TABLE IF NOT EXISTS `snapshots` (
 )
 PARTITIONED BY (`create_day` DATE, `insert_job_run_id` VARCHAR(255))
 STORED AS PARQUET
-LOCATION "s3://jornaya-dev-us-east-1-udl/snapshots/"
-TBLPROPERTIES ("parquet.compress"="SNAPPY");
+LOCATION 's3://jornaya-dev-us-east-1-udl/snapshots/'
+TBLPROPERTIES ('parquet.compress'='SNAPPY');

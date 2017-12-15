@@ -7,5 +7,5 @@ CREATE EXTERNAL TABLE IF NOT EXISTS pii_hashing (
 , `source_ts` TIMESTAMP
 )
 STORED AS PARQUET
-LOCATION "s3://jornaya-dev-us-east-1-udl/pii_hashing/"
-TBLPROPERTIES ("parquet.compress"="SNAPPY");
+LOCATION 's3://jornaya-dev-us-east-1-udl/pii_hashing/'
+TBLPROPERTIES ('parquet.compress'='SNAPPY');
