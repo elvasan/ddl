@@ -16,7 +16,7 @@ CREATE EXTERNAL TABLE IF NOT EXISTS `campaigns` (
 , `name` STRING
 , `threatmetrix_default` TINYINT
 , `insert_ts` TIMESTAMP
-, `insert_job_run_id` INT
+, `insert_job_run_id` VARCHAR(255)
 , `source_ts` TIMESTAMP
 )
 STORED AS PARQUET

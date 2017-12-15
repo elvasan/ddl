@@ -3,7 +3,7 @@ CREATE EXTERNAL TABLE IF NOT EXISTS pii_hashing (
 , `hash` STRING
 , `hash_type` STRING
 , `insert_ts` TIMESTAMP
-, `insert_job_run_id` INT
+, `insert_job_run_id` VARCHAR(255)
 , `source_ts` TIMESTAMP
 )
 STORED AS PARQUET
