@@ -11,4 +11,4 @@ CREATE EXTERNAL TABLE IF NOT EXISTS entities (
 )
 STORED AS PARQUET
 LOCATION 's3://jornaya-dev-us-east-1-udl/entities/'
-TBLPROPERTIES ('parquet.compress'='SNAPPY');
+TBLPROPERTIES ('PARQUET.COMPRESS'='SNAPPY');

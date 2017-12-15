@@ -8,4 +8,4 @@ CREATE EXTERNAL TABLE IF NOT EXISTS pii_hashing (
 )
 STORED AS PARQUET
 LOCATION 's3://jornaya-dev-us-east-1-udl/pii_hashing/'
-TBLPROPERTIES ('parquet.compress'='SNAPPY');
+TBLPROPERTIES ('PARQUET.COMPRESS'='SNAPPY');
