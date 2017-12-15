@@ -1,37 +1,36 @@
-CREATE EXTERNAL TABLE IF NOT EXISTS `leads`(
-  `account_code` varchar(36), 
-  `browser` string, 
-  `browser_maker` string, 
-  `browser_name` string, 
-  `campaign_key` varchar(36), 
-  `client_time` bigint, 
-  `created` double, 
-  `device_pointing_method` string, 
-  `device_type` string, 
-  `geoip_city` string, 
-  `geoip_continent_code` string, 
-  `geoip_country_code` string, 
-  `geoip_isp` string, 
-  `geoip_postal_code` string, 
-  `geoip_region` string, 
-  `http_content_length` int, 
-  `http_user_agent` string, 
-  `http_x_forwarded_for` string, 
-  `ip` bigint, 
-  `is_mobile_device` tinyint, 
-  `major_ver` string, 
-  `minor_ver` string, 
-  `page_id` varchar(36), 
-  `parent` string, 
-  `platform` string, 
-  `sequence_number` int, 
-  `token` varchar(36), 
-  `version` string, 
-  `insert_ts` timestamp, 
-  `insert_batch_run_id` int, 
-  `insert_job_run_id` int, 
-  `source_ts` timestamp)
-PARTITIONED BY (create_day DATE)
+CREATE EXTERNAL TABLE IF NOT EXISTS `leads` (
+  `account_code` VARCHAR(36)
+, `browser` STRING
+, `browser_maker` STRING
+, `browser_name` STRING
+, `campaign_key` VARCHAR(36)
+, `client_time` BIGINT
+, `created` DOUBLE
+, `device_pointing_method` STRING
+, `device_type` STRING
+, `geoip_city` STRING
+, `geoip_continent_code` STRING
+, `geoip_country_code` STRING
+, `geoip_isp` STRING
+, `geoip_postal_code` STRING
+, `geoip_region` STRING
+, `http_content_length` INT
+, `http_user_agent` STRING
+, `http_x_forwarded_for` STRING
+, `ip` BIGINT
+, `is_mobile_device` tinyint
+, `major_ver` STRING
+, `minor_ver` STRING
+, `page_id` VARCHAR(36)
+, `parent` STRING
+, `platform` STRING
+, `sequence_number` INT
+, `token` VARCHAR(36)
+, `version` STRING
+, `insert_ts` TIMESTAMP
+, `source_ts` TIMESTAMP
+)
+PARTITIONED BY (`create_day` DATE, `insert_job_run_id` VARCHAR(255))
 STORED AS PARQUET
 LOCATION 's3://jornaya-dev-us-east-1-udl/leads/'
-TBLPROPERTIES ("parquet.compress"="SNAPPY");
+TBLPROPERTIES ('PARQUET.COMPRESS'='SNAPPY');
