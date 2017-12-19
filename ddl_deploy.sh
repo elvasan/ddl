@@ -35,11 +35,21 @@ apply_tables_to_update() {
 # $1 -> layer
 # $2 -> table
 get_last_ddl_update_time() {
-  aws glue get-table \
-    --database ${1} \
-    --name ${2} \
-    --query 'Table.Parameters.transient_lastDdlTime' \
-    --output text
+  output=$(aws glue get-table \
+            --database ${1} \
+            --name ${2} \
+            --query 'Table.Parameters.transient_lastDdlTime' \
+            --output text 2>&1)
+
+  result=$?
+
+  # if we have non-zero exit code, treat as table doesn't exist by returning 0
+  # else, return the last ddl time we got from the output
+  if [[ 0 -ne ${result} ]]; then
+    echo 0
+  else
+    echo ${output}
+  fi
 }
 
 # get_last_ddl_commit_time
@@ -72,9 +82,9 @@ find_tables_to_update() {
 
     # if there is no ddl update time, then we need to update it!
     # set last update time to zero so we apply ddl
-    if [[ -z ${last_ddl_update_time} ]]; then
+    if [[ 0 -eq ${last_ddl_update_time} ]]; then
       tables_to_update[${table}]=0
-      break;
+      continue
     fi
 
     # look at all DDL files for the table, finding the last time any
