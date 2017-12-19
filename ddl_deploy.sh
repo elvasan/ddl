@@ -37,8 +37,9 @@ apply_tables_to_update() {
 get_last_ddl_update_time() {
   aws glue get-table \
     --database ${1} \
-    --name ${2} | \
-    jq -r .Table.Parameters.transient_lastDdlTime
+    --name ${2} \
+    --query 'Table.Parameters.transient_lastDdlTime' \
+    --output text
 }
 
 # get_last_ddl_commit_time
