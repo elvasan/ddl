@@ -6,6 +6,6 @@ CREATE EXTERNAL TABLE IF NOT EXISTS v_campaign_opt_in_state (
   insert_ts         timestamp
 ) 
 STORED AS PARQUET
-LOCATION 's3://jornaya-dev-us-east-1-prj/publisher_permissions/v_campaign_opt_in_state/'
+LOCATION 's3://jornaya-${ENV}-us-east-1-prj/publisher_permissions/v_campaign_opt_in_state/'
 TBLPROPERTIES ("parquet.compress"="SNAPPY");
 

@@ -10,5 +10,5 @@ CREATE EXTERNAL TABLE IF NOT EXISTS company (
   insert_job_run_id varchar(255)
 ) 
 STORED AS PARQUET
-LOCATION 's3://jornaya-dev-us-east-1-fdl/company/'
+LOCATION 's3://jornaya-${ENV}-us-east-1-fdl/company/'
 TBLPROPERTIES ("parquet.compress"="SNAPPY")

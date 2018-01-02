@@ -11,5 +11,5 @@ CREATE EXTERNAL TABLE IF NOT EXISTS campaign (
   load_action_cd      string
 )
 STORED AS PARQUET
-LOCATION 's3://jornaya-dev-us-east-1-lrf/campaign/'
+LOCATION 's3://jornaya-${ENV}-us-east-1-lrf/campaign/'
 TBLPROPERTIES ("parquet.compress"="SNAPPY");

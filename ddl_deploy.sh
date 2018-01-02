@@ -1,7 +1,8 @@
 #!/bin/bash
 
+env=""
 layer=""
-logs_bucket="s3://aws-athena-query-results-794223901232-us-east-1"
+account_number=""
 last_ddl_update_time=0
 last_ddl_commit_time=0
 
@@ -115,8 +116,17 @@ print_tables_to_update() {
 # $1 -> statement text
 # $2 -> database name
 run_athena_query() {
+
+  # The staging environment will read the raw data layer from prod
+  # if env is staging and layer is rdl, then point location to prod
+  if [[ ${env} == "staging" && ${layer} == "rdl" ]]; then
+    query=$(echo ${1} | sed 's/-${ENV}-/-prod-/g')
+  else
+    query=$(echo ${1} | sed 's/-${ENV}-/'"-${env}-"'/g')
+  fi
+
   query_id=$(aws athena start-query-execution \
-              --query-string "${1}" \
+              --query-string "${query}" \
               --query-execution-context Database=${2} \
               --result-configuration OutputLocation=${logs_bucket} \
               --query 'QueryExecutionId' \
@@ -145,16 +155,24 @@ run_athena_query() {
 # Prints script usage instructions
 usage () {
   echo ""
-  echo "./ddl_deploy.sh -l layer [-b logs_bucket]"
+  echo "./ddl_deploy.sh -a account_number -e env -l layer [-b logs_bucket]"
+  echo "    -a: AWS account number of environment"
+  echo "    -e: Environment name to deploy (dev, qa, staging, prod)."
+  echo "        (NOTE: staging raw data layer will use prod S3 for location)"
   echo "    -l: Data Lake layer to deploy DDL"
   echo "    -b: (optional) S3 Path to logs bucket"
   echo "    -h: print this help message"
 }
 
-while getopts l:b:h opt; do
+while getopts a:e:l:b:h opt; do
   case ${opt} in
+    a)
+      account_number=${OPTARG}
+      logs_bucket="s3://aws-athena-query-results-${account_number}-us-east-1"
+      ;;
     l) layer=${OPTARG};;
     b) logs_bucket=${OPTARG};;
+    e) env=${OPTARG};;
     h)
       usage
       exit 0
