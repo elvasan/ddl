@@ -6,5 +6,5 @@ CREATE EXTERNAL TABLE IF NOT EXISTS account_opt_in (
   industry_nm	    string
 ) 
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
-LOCATION 's3://jornaya-dev-us-east-1-rdl/publisher_permissions/account_opt_in/';
+LOCATION 's3://jornaya-${ENV}-us-east-1-rdl/publisher_permissions/account_opt_in/';
 

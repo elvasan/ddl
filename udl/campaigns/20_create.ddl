@@ -20,5 +20,5 @@ CREATE EXTERNAL TABLE IF NOT EXISTS `campaigns` (
 , `source_ts` TIMESTAMP
 )
 STORED AS PARQUET
-LOCATION 's3://jornaya-dev-us-east-1-udl/campaigns/'
+LOCATION 's3://jornaya-${ENV}-us-east-1-udl/campaigns/'
 TBLPROPERTIES ('PARQUET.COMPRESS'='SNAPPY');

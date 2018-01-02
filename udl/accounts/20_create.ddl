@@ -33,5 +33,5 @@ CREATE EXTERNAL TABLE IF NOT EXISTS `accounts` (
 , `source_ts` TIMESTAMP
 )
 STORED AS PARQUET
-LOCATION 's3://jornaya-dev-us-east-1-udl/accounts/'
+LOCATION 's3://jornaya-${ENV}-us-east-1-udl/accounts/'
 TBLPROPERTIES ('PARQUET.COMPRESS'='SNAPPY');

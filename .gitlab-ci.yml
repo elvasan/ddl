@@ -16,7 +16,11 @@ deploy to dev:
   <<: *deploy_template
   environment:
     name: dev
+  variables:
+    env: dev
   script:
     - bash
     - layers=( "udl" "rdl" "fdl" "lrf" "prj" )
-    - for layer in ${layers[@]}; do bash ddl_deploy.sh -l ${layer}; done
+    - for layer in ${layers[@]}; do
+    -   bash ddl_deploy.sh -a ${AWS_ACCOUNT_NUMBER} -e ${env} -l ${layer}
+    - done
