@@ -5,7 +5,6 @@ CREATE EXTERNAL TABLE IF NOT EXISTS consumer_view_edge (
   to_node_type_cd          varchar(30),
   linkage_ts               timestamp
 )
-PARTITIONED BY (linkage_dt date, linkage_hr smallint)
 STORED AS PARQUET
 LOCATION 's3://jornaya-${ENV}-us-east-1-prj/cis/consumer_graph/consumer_view_edge/'
 TBLPROPERTIES ('parquet.compress'='SNAPPY');
