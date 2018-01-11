@@ -9,4 +9,4 @@ CREATE EXTERNAL TABLE IF NOT EXISTS `entities`(
 , `role` STRUCT<n:STRING>
 )
 ROW FORMAT SERDE 'org.openx.data.jsonserde.JsonSerDe'
-LOCATION 's3://jornaya-${ENV}-us-east-1-rdl/entities/';
+LOCATION '${LOCATION}';

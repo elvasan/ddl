@@ -41,4 +41,4 @@ CREATE EXTERNAL TABLE IF NOT EXISTS `accounts`(
 , `website` STRUCT<s:STRING>
 )
 ROW FORMAT SERDE 'org.openx.data.jsonserde.JsonSerDe'
-LOCATION 's3://jornaya-${ENV}-us-east-1-rdl/accounts/';
+LOCATION '${LOCATION}';
