@@ -25,5 +25,5 @@ CREATE EXTERNAL TABLE IF NOT EXISTS `lead_dom` (
 )
 PARTITIONED BY (`create_day` DATE, `insert_job_run_id` VARCHAR(255))
 STORED AS PARQUET
-LOCATION 's3://jornaya-${ENV}-us-east-1-udl/lead_dom/'
+LOCATION '${LOCATION}'
 TBLPROPERTIES ('PARQUET.COMPRESS'='SNAPPY');

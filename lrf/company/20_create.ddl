@@ -12,5 +12,5 @@ CREATE EXTERNAL TABLE IF NOT EXISTS company (
   load_action_cd      string
 ) 
 STORED AS PARQUET
-LOCATION 's3://jornaya-${ENV}-us-east-1-lrf/company/'
+LOCATION '${LOCATION}'
 TBLPROPERTIES ("parquet.compress"="SNAPPY");

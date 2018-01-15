@@ -1,4 +1,4 @@
 CREATE EXTERNAL TABLE IF NOT EXISTS deviceid(item MAP<STRING, STRING>)
 PARTITIONED BY (created DATE)
 STORED AS PARQUET
-LOCATION 's3://jornaya-${ENV}-us-east-1-rdl/deviceid/';
+LOCATION '${LOCATION}';

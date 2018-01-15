@@ -6,5 +6,5 @@ CREATE EXTERNAL TABLE IF NOT EXISTS consumer_view_edge (
   linkage_ts               timestamp
 )
 STORED AS PARQUET
-LOCATION 's3://jornaya-${ENV}-us-east-1-prj/cis/consumer_graph/consumer_view_edge/'
+LOCATION '${LOCATION}'
 TBLPROPERTIES ('parquet.compress'='SNAPPY');

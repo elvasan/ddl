@@ -15,5 +15,5 @@ CREATE EXTERNAL TABLE IF NOT EXISTS edge (
 )
 PARTITIONED BY (linkage_dt date, linkage_hr smallint)
 STORED AS PARQUET
-LOCATION 's3://jornaya-${ENV}-us-east-1-prj/cis/consumer_graph/edge/'
+LOCATION '${LOCATION}'
 TBLPROPERTIES ('parquet.compress'='SNAPPY');
