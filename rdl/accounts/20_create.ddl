@@ -1,6 +1,6 @@
 CREATE EXTERNAL TABLE IF NOT EXISTS `accounts`(
   `active` STRUCT<n:STRING>
-, `affiliate_click_network` STRUCT<n:STRING>
+, `affiliate_click_network` STRUCT<n:STRING, s:STRING>
 , `api_key` STRUCT<s:STRING>
 , `api_response` STRUCT<n:STRING>
 , `audit_auth` STRUCT<n:STRING>
@@ -37,8 +37,9 @@ CREATE EXTERNAL TABLE IF NOT EXISTS `accounts`(
 , `role` STRUCT<s:STRING>
 , `status` STRUCT<n:STRING>
 , `testing` STRUCT<n:STRING>
-, `timezone_id` STRUCT<n:STRING>
+, `timezone_id` STRUCT<n:STRING, s:STRING>
 , `website` STRUCT<s:STRING>
+, `web_site` STRUCT<s:STRING>
 )
 ROW FORMAT SERDE 'org.openx.data.jsonserde.JsonSerDe'
 LOCATION '${LOCATION}';
