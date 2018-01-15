@@ -22,5 +22,5 @@ deploy to dev:
     - bash
     - layers=( "udl" "rdl" "fdl" "lrf" "prj" )
     - for layer in ${layers[@]}; do
-    -   bash ddl_deploy.sh -a ${AWS_ACCOUNT_NUMBER} -e ${env} -l ${layer}
+    -   bash ddl_deploy.sh -e ${env} -l ${layer}
     - done

@@ -20,5 +20,5 @@ CREATE EXTERNAL TABLE IF NOT EXISTS lead_event (
   )
 PARTITIONED BY (server_gmt_dt date, insert_job_run_id string)
 STORED AS PARQUET
-LOCATION 's3://jornaya-${ENV}-us-east-1-fdl/lead_event/'
+LOCATION '${LOCATION}' 
 TBLPROPERTIES ("parquet.compress"="SNAPPY");

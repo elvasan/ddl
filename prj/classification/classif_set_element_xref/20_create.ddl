@@ -5,4 +5,4 @@ CREATE EXTERNAL TABLE IF NOT EXISTS classif_set_element_xref (
   classif_category_key    int,
   inserted_ts             timestamp
  ) STORED AS PARQUET
-LOCATION 's3://jornaya-${ENV}-us-east-1-prj/classification/classif_set_element_xref';
+LOCATION '${LOCATION}';

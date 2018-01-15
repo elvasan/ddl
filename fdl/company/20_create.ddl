@@ -9,5 +9,5 @@ CREATE EXTERNAL TABLE IF NOT EXISTS company (
   source_ts         timestamp 
 ) 
 STORED AS PARQUET
-LOCATION 's3://jornaya-${ENV}-us-east-1-fdl/company/'
+LOCATION '${LOCATION}'
 TBLPROPERTIES ("parquet.compress"="SNAPPY")

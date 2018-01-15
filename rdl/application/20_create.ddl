@@ -4,4 +4,4 @@ CREATE EXTERNAL TABLE IF NOT EXISTS application (
   default_opt_in_ind smallint
 ) 
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
-LOCATION 's3://jornaya-${ENV}-us-east-1-rdl/publisher_permissions/application/';
+LOCATION '${LOCATION}';

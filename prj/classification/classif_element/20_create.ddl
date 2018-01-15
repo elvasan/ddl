@@ -4,4 +4,4 @@ CREATE EXTERNAL TABLE IF NOT EXISTS classif_element (
   element_nm              varchar(30),
   inserted_ts             timestamp
 ) STORED AS PARQUET
-LOCATION 's3://jornaya-${ENV}-us-east-1-prj/classification/classif_element';
+LOCATION '${LOCATION}';
