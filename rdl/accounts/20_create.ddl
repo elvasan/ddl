@@ -22,7 +22,7 @@ CREATE EXTERNAL TABLE IF NOT EXISTS `accounts`(
 , `http_X-Forwarded-Port` STRUCT<n:STRING>
 , `http_X-Forwarded-Proto` STRUCT<s:STRING>
 , `id` STRUCT<n:STRING>
-, `industry` STRUCT<n:STRING>
+, `industry` STRUCT<n:STRING, s:STRING>
 , `lead_aggregator` STRUCT<s:STRING, n:STRING>
 , `lead_originator` STRUCT<s:STRING, n:STRING>
 , `legal_agreed` STRUCT<n:STRING>
