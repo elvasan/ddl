@@ -51,8 +51,10 @@ CREATE EXTERNAL TABLE IF NOT EXISTS lead_activity (
   field_label_vis_text_color_txt       int, 
   field_lablel_text_size_px            int, 
   insert_ts                            timestamp, 
-  source_ts                            timestamp)
-PARTITIONED BY (server_gmt_dt date, insert_job_run_id string)
+  source_ts                            timestamp
+)
+PARTITIONED BY (server_gmt_dt date, 
+		insert_job_run_id string)
 STORED AS PARQUET
 LOCATION '${LOCATION}'
 TBLPROPERTIES ("parquet.compress"="SNAPPY")
