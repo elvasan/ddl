@@ -1,7 +1,6 @@
 CREATE EXTERNAL TABLE IF NOT EXISTS `accounts` (
   `active` TINYINT
 , `code` VARCHAR(36)
-, `created` DOUBLE
 , `entity_code` VARCHAR(36)
 , `name` VARCHAR(45)
 , `role` STRING
