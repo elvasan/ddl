@@ -5,8 +5,7 @@ CREATE EXTERNAL TABLE IF NOT EXISTS campaign (
   industry_nm         varchar(50),
   account_id          varchar(36),
   insert_ts           timestamp,
-  insert_batch_run_id int,
-  insert_job_run_id   int,
+  insert_job_run_id   varchar(255),
   source_ts           timestamp
 )
 STORED AS PARQUET
