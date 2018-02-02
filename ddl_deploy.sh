@@ -134,6 +134,15 @@ get_s3_location() {
   # else set location as normal
   if [[ ! -z ${user} ]]; then
     s3_location="s3://jornaya-${1}-${current_region}-${2}/${user}/${3}/"
+
+    ## if s3 location for developer isn't there, create it
+    aws s3 ls ${s3_location} 2>&1 > /dev/null
+    if [[ 0 -ne $? ]]; then
+      aws s3api put-object --bucket $(echo ${s3_location} | cut -d '/' -f 3) \
+       --key ${user}/${3}/ \
+       2>&1 > /dev/null
+    fi
+
   elif [[ ${1} == "staging" && ${2} == "rdl" ]]; then
     s3_location="s3://jornaya-prod-${current_region}-${2}/${3}/"
   else
