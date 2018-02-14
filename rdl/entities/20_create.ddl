@@ -1,3 +1,7 @@
-CREATE EXTERNAL TABLE IF NOT EXISTS entities(item MAP<STRING, STRING>)
-STORED AS PARQUET
-LOCATION 's3://jornaya-dev-us-east-1-rdl/entities/';
+CREATE EXTERNAL TABLE IF NOT EXISTS `entities`(
+  `code` STRUCT<s:STRING>
+, `created` STRUCT<n:STRING>
+, `name` STRUCT<s:STRING>
+)
+ROW FORMAT SERDE 'org.openx.data.jsonserde.JsonSerDe'
+LOCATION '${LOCATION}';

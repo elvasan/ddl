@@ -12,19 +12,15 @@ stages:
     - pip install awscli
     - export AWS_DEFAULT_REGION="us-east-1"
 
-deploy udl, rdl, fdl, lrf to dev:
+deploy to dev:
   <<: *deploy_template
   environment:
-    name: dev-rufl
+    name: dev
+  variables:
+    env: dev
   script:
     - bash
-    - layers=( "udl" "rdl" "fdl" "lrf" )
-    - for layer in ${layers[@]}; do bash ddl_deploy.sh -l ${layer}; done
-
-deploy prj to dev:
-  <<: *deploy_template
-  environment:
-    name: dev-prj
-  script:
-    - bash
-    - bash ddl_deploy.sh -l prj
+    - layers=( "udl" "rdl" "fdl" "lrf" "prj" )
+    - for layer in ${layers[@]}; do
+    -   bash ddl_deploy.sh -e ${env} -l ${layer}
+    - done

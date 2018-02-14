@@ -1,30 +1,29 @@
-CREATE EXTERNAL TABLE IF NOT EXISTS `lead_dom`(
-  `client_time` bigint, 
-  `created` double, 
-  `dst` boolean, 
-  `execution_time` int, 
-  `flash_version` string, 
-  `http_content_length` int, 
-  `http_user_agent` string, 
-  `http_x_forwarded_for` string, 
-  `local_storage` boolean, 
-  `navigator_app_code_name` string, 
-  `navigator_language` string, 
-  `navigator_platform` string, 
-  `navigator_product_sub` string, 
-  `navigator_user_agent` string, 
-  `page_id` varchar(36), 
-  `screen_height` smallint, 
-  `screen_width` smallint, 
-  `sequence_number` smallint, 
-  `session_storage` boolean, 
-  `token` varchar(36), 
-  `tz` smallint, 
-  `insert_ts` timestamp, 
-  `insert_batch_run_id` int, 
-  `insert_job_run_id` int, 
-  `source_ts` timestamp)
-PARTITIONED BY (create_day DATE)
+CREATE EXTERNAL TABLE IF NOT EXISTS `lead_dom` (
+  `client_time` BIGINT
+, `created` DOUBLE
+, `dst` BOOLEAN
+, `execution_time` INT
+, `flash_version` STRING
+, `http_content_length` INT
+, `http_user_agent` STRING
+, `http_x_forwarded_for` STRING
+, `local_storage` BOOLEAN
+, `navigator_app_code_name` STRING
+, `navigator_language` STRING
+, `navigator_platform` STRING
+, `navigator_product_sub` STRING
+, `navigator_user_agent` STRING
+, `page_id` VARCHAR(36)
+, `screen_height` SMALLINT
+, `screen_width` SMALLINT
+, `sequence_number` SMALLINT
+, `session_storage` BOOLEAN
+, `token` VARCHAR(36)
+, `tz` SMALLINT
+, `insert_ts` TIMESTAMP
+, `source_ts` TIMESTAMP
+)
+PARTITIONED BY (`create_day` DATE, `insert_job_run_id` VARCHAR(255))
 STORED AS PARQUET
-LOCATION 's3://jornaya-dev-us-east-1-udl/lead_dom/'
-TBLPROPERTIES ("parquet.compress"="SNAPPY");
+LOCATION '${LOCATION}'
+TBLPROPERTIES ('PARQUET.COMPRESS'='SNAPPY');
