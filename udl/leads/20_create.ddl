@@ -1,0 +1,37 @@
+CREATE EXTERNAL TABLE IF NOT EXISTS `leads`(
+  `account_code` varchar(36), 
+  `browser` string, 
+  `browser_maker` string, 
+  `browser_name` string, 
+  `campaign_key` varchar(36), 
+  `client_time` bigint, 
+  `created` double, 
+  `device_pointing_method` string, 
+  `device_type` string, 
+  `geoip_city` string, 
+  `geoip_continent_code` string, 
+  `geoip_country_code` string, 
+  `geoip_isp` string, 
+  `geoip_postal_code` string, 
+  `geoip_region` string, 
+  `http_content_length` int, 
+  `http_user_agent` string, 
+  `http_x_forwarded_for` string, 
+  `ip` bigint, 
+  `is_mobile_device` tinyint, 
+  `major_ver` string, 
+  `minor_ver` string, 
+  `page_id` varchar(36), 
+  `parent` string, 
+  `platform` string, 
+  `sequence_number` int, 
+  `token` varchar(36), 
+  `version` string, 
+  `insert_ts` timestamp, 
+  `insert_batch_run_id` int, 
+  `insert_job_run_id` int, 
+  `source_ts` timestamp)
+PARTITIONED BY (create_day DATE)
+STORED AS PARQUET
+LOCATION 's3://jornaya-dev-us-east-1-udl/leads/'
+TBLPROPERTIES ("parquet.compress"="SNAPPY");

@@ -1,8 +1,0 @@
-DROP TABLE IF EXISTS formdata;
-
-CREATE EXTERNAL TABLE IF NOT EXISTS formdata(item MAP<STRING, STRING>)
-PARTITIONED BY (created DATE)
-STORED AS PARQUET
-LOCATION 's3://jornaya-dev-us-east-1-rdl/formdata/';
-
-MSCK REPAIR TABLE formdata;

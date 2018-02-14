@@ -1,8 +1,0 @@
-DROP TABLE IF EXISTS lead_dom;
-
-CREATE EXTERNAL TABLE IF NOT EXISTS lead_dom(item MAP<STRING, STRING>)
-PARTITIONED BY (created DATE)
-STORED AS PARQUET
-LOCATION 's3://jornaya-dev-us-east-1-rdl/lead_dom/';
-
-MSCK REPAIR TABLE lead_dom;
